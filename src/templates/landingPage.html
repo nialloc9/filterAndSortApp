@@ -1,0 +1,75 @@
+<div data-ng-controller="landingPageCtrl">
+    <h1 class="landingPageTitle">Establishments</h1>
+
+    <!-- Filter area - choose how you would like the data to be filtered -->
+    <h2>Filters</h2>
+    <div class="row">
+        <!-- Filter - Name -->
+        <div class="form-group col-sm-2">
+             <label for="establishmentNameFilter">Name:</label><br />
+             <input id="establishmentNameFilter" class="form-control" data-ng-model="establishmentNameFilter"/>
+        </div>
+
+        <!-- Filter - Stars -->
+        <div class="form-group col-sm-2">
+             <label for="establishmentStarFilter">Stars</label><br />
+            <input id="establishmentStarFilter" class="form-control" data-ng-model="establishmentStarFilter"/>
+        </div>
+
+        <!-- Filter - MinCost -->
+        <div class="form-group col-sm-2">
+            <label for="establishmentMinCostFilter">Minimum Cost</label><br />
+             <input id="establishmentMinCostFilter" class="form-control" data-ng-model="establishmentMinCostFilter"/>
+        </div>
+
+        <!-- Filter - TrpRating -->
+        <div class="form-group col-sm-2">
+            <label for="establishmentTrpRatingFilter">Trip Rating</label><br />
+            <input id="establishmentTrpRatingFilter" class="form-control" data-ng-model="establishmentTrpRatingFilter"/>
+        </div>
+
+        <!-- Filter - UserRating -->
+        <div class="form-group col-sm-2">
+            <label for="establishmentUserRatingFilter">User Rating</label><br />
+            <input id="establishmentUserRatingFilter" class="form-control" data-ng-model="establishmentUserRatingFilter"/>
+        </div>
+    </div>
+
+    <button class="btn btn-primary">Filter</button>
+
+    <!-- Sort area - select how to sort the data -->
+    <h2>Sort By:</h2>
+    <div class="row">
+        <div class="form-group col-sm-2">
+            <select class="form-control" data-ng-model="establishmentSortBy">
+                <option value="Distance">Distance</option>
+                <option value="Stars">Stars</option>
+                <option value="MinCost">Min Cost</option>
+                <option value="UserRating">User Rating</option>
+            </select>
+        </div>
+
+        <div class="col-sm-2">
+            <button class="btn btn-primary" data-ng-click="reverseButtunClick()">{{establishmentSortByBtnName}}</button>
+        </div>
+    </div>
+
+    <!-- Results - Show results of filter and sort -->
+    <div class="row">
+        <ul class="establishmentUl">
+            <li class="establishmentLi" data-ng-repeat="establishment in establishments | objectOrderBy: establishmentSortBy: establishmentSortByIsReverse ">
+                <div><strong>Distance: </strong>{{establishment.Distance}}</div>
+                <div><strong>Id: </strong>{{establishment.EstablishmentId}}</div>
+                <div><strong>Image Url: </strong>{{establishment.ImageUrl}}</div>
+                <div><strong>Location: </strong>{{establishment.Location}}</div>
+                <div><strong>Min Cost: </strong>{{establishment.MinCost}}</div>
+                <div><strong>Name: </strong>{{establishment.Name}}</div>
+                <div><strong>Stars: </strong>{{establishment.Stars}}</div>
+                <div><strong>User Rating: </strong>{{establishment.UserRating}}</div>
+                <div><strong>Rating Count: </strong>{{establishment.UserRatingCount}}</div>
+                <div><strong>Rating Title: </strong>{{establishment.UserRatingTitle}}</div>
+            </li>
+        </ul>
+    </div>
+
+</div>

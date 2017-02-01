@@ -1,0 +1,15 @@
+.landingPageTitle{
+    text-align: center;
+}
+
+.establishmentUl{
+    padding: 0;
+}
+
+.establishmentLi{
+    list-style: none;
+    display: inline-block;
+    margin: 1%;
+    padding: 1%;
+    background-color: aliceblue;
+}
