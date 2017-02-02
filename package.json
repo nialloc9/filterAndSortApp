@@ -1,0 +1,23 @@
+{
+  "name": "angulardatafiltersortapp",
+  "version": "1.0.0",
+  "description": "This is a data sort and filter app that takes data from a json file.",
+  "main": "client.js\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[Dsrc\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[\u001b\u001b[C\u001b[/client.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nialloc9/filterAndSortApp.git"
+  },
+  "author": "Niall O Connor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nialloc9/filterAndSortApp/issues"
+  },
+  "homepage": "https://github.com/nialloc9/filterAndSortApp#readme",
+  "dependencies": {
+    "angular": "^1.6.1",
+    "angular-route": "^1.6.1"
+  }
+}
