@@ -25,7 +25,7 @@ class Hotel
      * this data stored in a database instead of a JSON file.
      */
     public final function getHotelData(){
-        $this->jsonData = file_get_contents('http://example.com/example.json/');
+        $this->jsonData = file_get_contents('../../resources/hotels.json');
         $this->decodeJSONData($this->jsonData);
 
         return $this->decodedData;
@@ -50,20 +50,34 @@ class Hotel
     }
 
     /**
+     * filters data
      * @param $data
      * @param $filter
      * @param $value
-     * @return Array
+     * @return array
      */
     public final function filterData($data, $filter, $value){
-        $this->decodedData = $data;
+        $this->decodedData = $data['Establishments'];
         $this->filter = $filter;
         $this->value = $value;
 
-        foreach($this->decodedData as $key => $data){
-            if($data[$this->filter] == $this->value){
-                $this->returnData[] = $this->value;
+        //if the filter is minCost > operator is needed to compare else use ==
+        if($this->filter == "MinCost"){
+            foreach($this->decodedData as $key => $d){
+                if(($d[$this->filter] >= $this->value)){
+                    $this->returnData[] = $d;
+                }
             }
+        }else{
+            foreach($this->decodedData as $key => $d){
+                if($d[$this->filter] == $this->value){
+                    $this->returnData[] = $d;
+                }
+            }
+        }
+
+        if($this->returnData == null){
+            return [];
         }
 
         return $this->returnData;

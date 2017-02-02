@@ -13,19 +13,23 @@ use App\Model\Hotel as Hotel;
 if(!empty($_GET['task']) && $_GET['task'] == "FETCH_HOTEL_DATA"){
 
     //get required data
-    $filter = $_GET['filter'];
-    $value = $_GET['userInput'];
+    $filter = $_GET['filterType'];
+    $value = $_GET['filterValue'];
 
     //create new instance of Hotel object
     $hotel = new Hotel();
 
     //get data and filter
     $data = $hotel->getHotelData();
-    $filteredData = $hotel->filterData($data, $filter, $value);
 
-    //encode data as JSON object
-    $returnData = $hotel->encodeJSONData($filteredData);
+    //if no filter encode all data else filter
+    if(empty($filter)){
+        $returnData = $hotel->encodeJSONData($data['Establishments']);
+    }else{
+        $filteredData = $hotel->filterData($data, $filter, $value);
+        $returnData = $hotel->encodeJSONData($filteredData);
+    }
 
-    echo $returnData;
+    echo($returnData);
 }
 ?>

@@ -11,6 +11,26 @@ app.config(function($routeProvider){
 
 app.controller('landingPageCtrl', ['$scope', '$http', function($scope, $http){
 
+    //set filter scope values
+    $scope.filterType = '';
+    $scope.filterValue = '';
+
+    /**
+     * fetches hotel data from backend
+     * uses angular $http serveice to request the data
+     */
+    $scope.fetchHotelData = function(){
+        $http({
+            url: './server/controller/getHotelData.controller.php',
+            method: "GET",
+            params: {task: "FETCH_HOTEL_DATA", filterType: $scope.filterType, filterValue: $scope.filterValue}
+        }).then(function successCallback(response){
+            $scope.establishments = response.data;
+        }, function errorCallback(response){
+            //console.log(response)
+        });
+    };
+
     //set sorting scope values
     $scope.establishmentSortBy = 'UserRating';
     $scope.establishmentSortByIsReverse = false;
@@ -20,14 +40,8 @@ app.controller('landingPageCtrl', ['$scope', '$http', function($scope, $http){
     $scope.reverseButtunClick = function(){
         $scope.establishmentSortByIsReverse = !$scope.establishmentSortByIsReverse;
         $scope.establishmentSortByBtnName = ($scope.establishmentSortByIsReverse)?'Ascending':'Descending';
-    }
+    };
 
-    /* Get data from json file. Then call one either successCallback or errorCallback */
-    $http.get("./resources/hotels.json").then(function successCallback(response){
-      $scope.establishments = response.data.Establishments;
-    }, function errorCallback(response){
-      console.log(response)
-    });
 }]);
 
 /**objectOrderBy - Custom filter to sort objects by object property.
