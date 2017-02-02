@@ -14,3 +14,4 @@ This is an application that takes JSON data and sorts and filters it before disp
 * To make the application easier to scale adding a database instead of a json file would be ideal.
 * If a database is used PDO can be used to help prevent sql injection.
 * Jasmine and Karma can be used to test application.
+* Project spec asks to filter and sort by TrpRating. However, this data couldn't be found in the JSON file. Further investigation needed.
