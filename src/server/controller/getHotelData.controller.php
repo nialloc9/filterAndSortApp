@@ -5,9 +5,21 @@
  * Date: 01/02/2017
  * Time: 22:31
  */
-require_once '../model/Hotel.model.php';
 
-use App\Model\Hotel as Hotel;
+//require_once '../Model/Hotel.Model.php';
+
+class Autoloader{
+
+    public static function modelLoader($modelName){
+        require_once '../'.$modelName.'.model.php';
+    }
+
+    //other loaders
+}
+
+spl_autoload_register('Autoloader::modelLoader');
+
+use Model\Hotel as Hotel;
 
 //task check
 if(!empty($_GET['task']) && $_GET['task'] == "FETCH_HOTEL_DATA"){

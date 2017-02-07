@@ -6,7 +6,7 @@
  * Time: 22:03
  */
 
-namespace App\Model;
+namespace Model;
 
 
 class Hotel

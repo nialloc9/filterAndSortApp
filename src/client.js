@@ -19,6 +19,7 @@ app.controller('landingPageCtrl', ['$scope', '$http', function($scope, $http){
      * fetches hotel data from backend
      * uses angular $http serveice to request the data
      */
+
     $scope.fetchHotelData = function(){
         $http({
             url: './server/controller/getHotelData.controller.php',
